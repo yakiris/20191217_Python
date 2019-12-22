@@ -35,7 +35,7 @@ my_str = 'G123456789 Hello Wor9ld!'
 
 # # ----- > Списки - изменяемый тип данных
 # # my_list = [] # пустой список
-# # my_list = ['Hello', 10, 50.2, True]
+my_list = ['Hello', 10, 50.2, True]
 # # # print(list(my_str)) # преобразовывает строку посимвольно в список
 # # print(my_list[1:-1:]) # срезы [start:stop:step]
 # # my_list.append('world') # добавление элемента в конец списка
@@ -70,7 +70,7 @@ my_str = 'G123456789 Hello Wor9ld!'
 # print(b)
 
 # # ----- > Словарь {'key': 'value'} {'ключ': 'значение'}
-# my_dict = {'name': 'Ivan', 'surname': 'Ivanov', 'age': '25'}
+my_dict = {'name': 'Ivan', 'surname': 'Ivanov', 'age': '25'}
 # print(my_dict['name']) # запрос из библиотеки по ключу, если такого ключа нет - ошибка
 # print(my_dict.get('name')) # запрос из библиотеки по ключу, если такого ключа нет - None
 # my_dict['data'] = [1, 5, 8, 20] # добавление нового элемента в конец словаря
@@ -82,6 +82,27 @@ my_str = 'G123456789 Hello Wor9ld!'
 # print(my_dict.values()) # Запрос значений словаря, возвращает лист
 # print(my_dict.items()) # Запрос пар словаря, возвращает лист картежей
 
-# байтовое представление
-print(b'text')
-print('тест'.encode('utf-8'))
+# # байтовое представление
+# print(b'text')
+# print('тест'.encode('utf-8'))
+
+# # ----- > Исключение ошибки
+# # деления на 0
+# try: # попытка
+#     print(10/0)
+#     print(10 /'0')
+# except ZeroDivisionError: # исключение
+#     print('Деление на 0 запрещено!')
+# except TypeError:
+#     print('Разные типы данных не могут делиться')
+#
+# for key, value in my_dict.items():
+#     print(key, value)
+#
+# for i in range(0, 50, 5):
+#     print(i, 'Hello')
+
+# ----- > Тернарный оператор. Запись if else в одну строку при условии простого условия
+
+a = 5 if 5 > 6 else 0
+print(a)
