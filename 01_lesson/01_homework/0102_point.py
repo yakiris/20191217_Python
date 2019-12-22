@@ -6,15 +6,15 @@ print(50 * '-')
 user_second = int(input('Введите количество секунд: '))
 
 hour = user_second // 3600
-if 0 <= hour < 9:
-    hour = '0' + str(hour)
+#if 0 <= hour < 9:
+ #   hour = '0' + str(hour)
 ost_hour = user_second % 3600
 minute = ost_hour // 60
-if 0 <= minute < 9:
-    minute = '0' + str(minute)
+#if 0 <= minute < 9:
+ #   minute = '0' + str(minute)
 second = ost_hour % 60
-if 0 <= second < 9:
-    second = '0' + str(second)
+#if 0 <= second < 9:
+ #   second = '0' + str(second)
 print(hour, minute, second, sep=':')
 # или
-print(f'{user_second} секунд(а) = {hour}:{minute}:{second}')
+print(f'{user_second} секунд(а) = {hour:02}:{minute:02}:{second:02}')
