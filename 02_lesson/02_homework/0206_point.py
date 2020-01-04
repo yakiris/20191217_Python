@@ -18,6 +18,7 @@
 # “ед”: [“шт.”]
 # }
 
+<<<<<<< HEAD
 
 goods = []
 my_tuple = []
@@ -25,14 +26,25 @@ my_num = 2
 for i in range(my_num):
     num = int(input('Номер товара: '))
     my_tuple.append(num)
+=======
+goods = []
+my_num = 3
+for i in range(my_num):
+    num = int(input('Номер товара: '))
+>>>>>>> a97ec06c2cb89593a6680fdd8aaf129e7a7378f9
     name = input('Наименование товара: ')
     price = int(input('Цена: '))
     count = int(input('Количество: '))
     unit = input('Единица измерения: ')
     my_dict = {'Название': name, 'Цена': price, 'Количество': count, 'Ед.изм.': unit}
+<<<<<<< HEAD
     my_tuple.append(my_dict)
     goods.append(tuple(my_tuple))
 
+=======
+    my_tuple = (num, my_dict)
+    goods.append(my_tuple)
+>>>>>>> a97ec06c2cb89593a6680fdd8aaf129e7a7378f9
 print('*' * 20)
 print('Структура товаров')
 print(goods)
@@ -44,7 +56,10 @@ for param in goods[0][1].keys():
         res = goods[i][1].get(param)
         res_param.append(res)
     result.update({param : res_param})
+<<<<<<< HEAD
 
+=======
+>>>>>>> a97ec06c2cb89593a6680fdd8aaf129e7a7378f9
 print('*' * 20)
 print('Аналитика о товарах')
 print(result)
