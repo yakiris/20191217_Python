@@ -85,7 +85,7 @@
 #
 # print(g)
 #
-# for el in g:
+# for el in generator():
 #     print(el)
 
 # from functools import reduce
