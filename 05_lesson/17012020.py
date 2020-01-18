@@ -63,15 +63,15 @@
 # os.rename('text.txt', '2.txt')
 # print(os.path.exists('2.txt')) # поиск наличия файла
 
-# import json
+import json
 
 # data = {'income': {'salary': 5000, 'bonus': 500000}}
 # with open('person_Vasya.json', 'w') as f:
 #     json.dump(data, f)
 
-# with open('person_Vasya.json') as f:
-#     data = json.load(f)
-# print(data)
+with open('person_Vasya.json') as f:
+    data = json.load(f)
+print(data)
 
 # import shutil
 # shutil.copyfile('2.txt', r'qwe\2.txt')
