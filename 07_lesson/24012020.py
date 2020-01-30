@@ -12,6 +12,7 @@
 #     def __del__(self):
 #         print('Объект удален')
 #
+
 #     def __setattr__(self, key, value):
 #         # print('Добавляю по ключу', key, 'Рзначение', value)
 #         # super().__setattr__(key, value)
