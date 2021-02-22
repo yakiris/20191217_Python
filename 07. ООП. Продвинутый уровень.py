@@ -1,32 +1,35 @@
+task = int(input('Запустить задачу номер: '))
+if task == 1:
 # 1. Реализовать класс Matrix (матрица). Обеспечить перегрузку конструктора класса (метод __init__()),
 # который должен принимать данные (список списков) для формирования матрицы.
 # Следующий шаг — реализовать перегрузку метода __str__() для вывода матрицы в привычном виде.
 # Далее реализовать перегрузку метода __add__() для реализации операции сложения двух объектов
 # класса Matrix (двух матриц). Результатом сложения должна быть новая матрица.
 
-class Matrix():
-    def __init__(self, my_matrix):
-        self.my_matrix = my_matrix
+    class Matrix():
+        def __init__(self, my_matrix):
+            self.my_matrix = my_matrix
 
-    def __str__(self):
-        return '\n'.join('\t'.join(map(str, line)) for line in self.my_matrix)
+        def __str__(self):
+            return '\n'.join('\t'.join(map(str, line)) for line in self.my_matrix)
 
-    def __add__(self, other):
-        new_matrix = []
-        for i in range(len(self.my_matrix)): new_matrix.append(list(map(lambda x, y: x + y, self.my_matrix[i], other.my_matrix[i])))
-        return new_matrix
+        def __add__(self, other):
+            new_matrix = []
+            for i in range(len(self.my_matrix)): new_matrix.append(list(map(lambda x, y: x + y, self.my_matrix[i], other.my_matrix[i])))
+            return new_matrix
 
-line1 = [[1, 1, 1], [2, 2, 2], [3, 3, 3]]
-line2 = [[3, 3, 3], [2, 2, 2], [1, 1, 1]]
-matrix1 = Matrix(line1)
-matrix2 = Matrix(line2)
-sum_matrix = matrix1 + matrix2
-matrix3 = Matrix(sum_matrix)
+    line1 = [[1, 1, 1], [2, 2, 2], [3, 3, 3]]
+    line2 = [[3, 3, 3], [2, 2, 2], [1, 1, 1]]
+    matrix1 = Matrix(line1)
+    matrix2 = Matrix(line2)
+    sum_matrix = matrix1 + matrix2
+    matrix3 = Matrix(sum_matrix)
 
-print(f'Первая матрица:\n{matrix1}')
-print(f'Вторая матрица:\n{matrix2}')
-print(f'Сумма матриц:\n{matrix3}')
+    print(f'Первая матрица:\n{matrix1}')
+    print(f'Вторая матрица:\n{matrix2}')
+    print(f'Сумма матриц:\n{matrix3}')
 
+if task == 2:
 # 2. Реализовать проект расчета суммарного расхода ткани на производство одежды. Основная сущность (класс)
 # этого проекта — одежда, которая может иметь определенное название. К типам одежды в этом проекте
 # относятся пальто и костюм. У этих типов одежды существуют параметры: размер (для пальто) и рост (для костюма).
@@ -36,35 +39,41 @@ print(f'Сумма матриц:\n{matrix3}')
 # Реализовать общий подсчет расхода ткани. Проверить на практике полученные на этом уроке знания:
 # реализовать абстрактные классы для основных классов проекта, проверить на практике работу декоратора @property.
 
-from abc import ABC, abstractmethod
+    from abc import ABC, abstractmethod
 
-class Dress(ABC):
-    @abstractmethod
-    def __init__(self, name):
-        self.name = name
+    class Clothes(ABC):
+        def __init__(self, param):
+            self.param = param
 
-class Coat(Dress):
-    def __init__(self, size):
-        super().__init__(self)
-        self.size = size
-    def calculation(self):
-        return round(self.size / 6.5 + 0.5, 2)
+        @abstractmethod
+        def calculation(self):
+            pass
 
-class Suit(Dress):
-    def __init__(self, height):
-        super().__init__(self)
-        self.height = height
-    def calculation(self):
-        return round(2*self.height + 0.3, 2)
+    class Coat(Clothes):
+        def __init__(self, param):
+            super().__init__(param)
 
-size = 48
-height = 1.75
-c = Coat(size)
-print(f'Расход ткани на пальто {size} размера = {c.calculation()} метра(ов)')
-s = Suit(height)
-print (f'Расход ткани на костюм на рост {height} = {s.calculation()} метра(ов)')
-print(f'Общий расход ткани = {c.calculation() + s.calculation()} метра(ов)')
+        @property
+        def calculation(self):
+            return round((self.param / 6.5) + 0.5, 2)
 
+    class Suit(Clothes):
+        def __init__(self, param):
+            super().__init__(param)
+
+        @property
+        def calculation(self):
+            return round((2 * self.param) + 0.3, 2)
+
+    size = 48
+    height = 1.75
+    coat = Coat(size)
+    print(f'Расход ткани на пальто {size} размера = {coat.calculation} метра(ов)')
+    suit = Suit(height)
+    print (f'Расход ткани на костюм на рост {height} = {suit.calculation} метра(ов)')
+    print(f'Общий расход ткани = {coat.calculation + suit.calculation} метра(ов)')
+
+if task == 3:
 # 3. Реализовать программу работы с органическими клетками, состоящими из ячеек. Необходимо создать класс Клетка.
 # В его конструкторе инициализировать параметр, соответствующий количеству ячеек клетки (целое число).
 # В классе должны быть реализованы методы перегрузки арифметических операторов: сложение (__add__()),
@@ -88,37 +97,37 @@ print(f'Общий расход ткани = {c.calculation() + s.calculation()}
 # Или, количество ячеек клетки равняется 15, количество ячеек в ряду — 5. Тогда метод make_order() вернет
 # строку: *****\n*****\n*****.
 
-class Cell:
-    def __init__(self, cells):
-        self.cells = int(cells)
+    class Cell:
+        def __init__(self, cells):
+            self.cells = int(cells)
 
-    def __str__(self):
-        return f'Результат операции {self.cells * "*"}'
+        def __str__(self):
+            return f'Результат операции {self.cells * "*"}'
 
-    def __add__(self, other):
-        return Cell(self.cells + other.cells)
+        def __add__(self, other):
+            return Cell(self.cells + other.cells)
 
-    def __sub__(self, other):
-        return self.cells - other.cells if (self.cells - other.cells) > 0 else print('Отрицательно!')
+        def __sub__(self, other):
+            return self.cells - other.cells if (self.cells - other.cells) > 0 else print('Отрицательно!')
 
-    def __mul__(self, other):
-        return Cell(int(self.cells * other.cells))
+        def __mul__(self, other):
+            return Cell(int(self.cells * other.cells))
 
-    def __truediv__(self, other):
-        return Cell(round(self.cells // other.cells))
+        def __truediv__(self, other):
+            return Cell(round(self.cells // other.cells))
 
-    def make_order(self, cells_in_row):
-        row = ''
-        for i in range(int((self.cells-1) / cells_in_row)):
-            row += f'{"*" * cells_in_row} \\n'
-        row += f'{"*" * (self.cells % cells_in_row)}'
-        return row
+        def make_order(self, cells_in_row):
+            row = ''
+            for i in range(int((self.cells-1) / cells_in_row)):
+                row += f'{"*" * cells_in_row} \\n'
+            row += f'{"*" * (self.cells % cells_in_row)}'
+            return row
 
-cells1 = Cell(12)
-cells2 = Cell(20)
-print(cells1)
-print(cells1 + cells2)
-print(cells2 - cells1)
-print(cells2 / cells1)
-print(cells1.make_order(5))
-print(cells2.make_order(5))
+    cells1 = Cell(12)
+    cells2 = Cell(20)
+    print(cells1)
+    print(cells1 + cells2)
+    print(cells2 - cells1)
+    print(cells2 / cells1)
+    print(cells1.make_order(5))
+    print(cells2.make_order(5))

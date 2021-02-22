@@ -42,10 +42,10 @@ elif task == 5:
     # Подсказка: использовать функцию reduce().
     from functools import reduce
 
-    num = [i for i in range(100, 1001) if i % 2 == 0]
     def my_f(num1, num2):
         return num1 * num2
 
+    num = [i for i in range(100, 1001) if i % 2 == 0]
     print(reduce(my_f, num))
 
 elif task == 6:
@@ -74,20 +74,6 @@ elif task == 7:
     # Функция отвечает за получение факториала числа, а в цикле необходимо выводить только первые n чисел,
     # начиная с 1! и до n!.
     # Подсказка: факториал числа n — произведение чисел от 1 до n. Например, факториал четырёх 4! = 1 * 2 * 3 * 4 = 24.
-
-    # def fact(num):
-    #     if num == 1:
-    #         yield 1
-    #     else:
-    #         yield num * fact(num-1)
-    #
-    # n = 8
-    # print(el for el in fact(n))
-    #
-    # for i in range(n+1):
-    #     if i != 0:
-    #         print(f'{i}!')
-
     from math import factorial
     from itertools import count
 
@@ -101,4 +87,3 @@ elif task == 7:
         if x == 15:
             break
         x += 1
-
